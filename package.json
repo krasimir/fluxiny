@@ -1,0 +1,23 @@
+{
+  "name": "fluxiny",
+  "version": "0.1.0",
+  "description": "Implementation of the Flux design pattern / architecture",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krasimir/fluxiny.git"
+  },
+  "keywords": [
+    "flux",
+    "react"
+  ],
+  "author": "Krasimir Tsonev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krasimir/fluxiny/issues"
+  },
+  "homepage": "https://github.com/krasimir/fluxiny"
+}
