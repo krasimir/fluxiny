@@ -14,7 +14,11 @@
     "flux",
     "react"
   ],
-  "author": "Krasimir Tsonev",
+  "author": {
+    "name": "Krasimir Tsonev",
+    "email": "info@krasimirtsonev.com",
+    "web": "http://krasimirtsonev.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/krasimir/fluxiny/issues"
