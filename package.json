@@ -1,10 +1,12 @@
 {
   "name": "fluxiny",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Implementation of the Flux design pattern / architecture",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "uglifyjs -o ./lib/fluxiny.min.js ./src/index.js",
+    "watch": "watch 'npm run build' src/",
+    "dev": "npm run build && npm run watch"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/krasimir/fluxiny/issues"
   },
-  "homepage": "https://github.com/krasimir/fluxiny"
+  "homepage": "https://github.com/krasimir/fluxiny",
+  "devDependencies": {
+    "uglify-js": "1.3.5",
+    "watch": "0.16.0"
+  }
 }
