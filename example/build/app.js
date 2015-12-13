@@ -19770,7 +19770,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var questions = ['F.json', 'A.json', 'B.json', 'G.json', 'C.json', 'D.json', 'E.json'];
+	var questions = ['F.json', 'A.json', 'break-it', 'B.json', 'G.json', 'C.json', 'D.json', 'E.json'];
 	var requestDelay = 600;
 
 	var QuestionLoader = (function () {
@@ -21700,17 +21700,14 @@
 	    return this.data.error;
 	  },
 	  update: function update(action, change) {
-	    switch (action.type) {
-	      case _constants.QUESTION_REQUEST_FAIL:
-	        this.data.error = action.payload;
+	    if (action.type === _constants.QUESTION_REQUEST_FAIL) {
+	      this.data.error = action.payload;
+	      change(this.data);
+	    } else if (action.type === _constants.QUESTION_REQUEST_SUCCESS || action.type === _constants.QUESTION_REQUEST_PENDING) {
+	      if (this.data.error !== null) {
+	        this.data.error = null;
 	        change(this.data);
-	        break;
-	      case _constants.QUESTION_REQUEST_SUCCESS:
-	        if (this.data.error !== null) {
-	          this.data.error = null;
-	          change(this.data);
-	        }
-	        break;
+	      }
 	    }
 	  }
 	};
