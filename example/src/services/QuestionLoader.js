@@ -1,8 +1,10 @@
 import superagent from 'superagent';
 
 const questions = [
+  'F.json',
   'A.json',
   'B.json',
+  'G.json',
   'C.json',
   'D.json',
   'E.json'

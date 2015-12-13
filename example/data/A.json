@@ -1,4 +1,11 @@
 {
-  "question": "How old are you?",
-  "type": "text"
+  "question": "What type of JavaScript do you write?",
+  "type": "many-of-many",
+  "options": [
+    "Browser",
+    "Server",
+    "Mobile",
+    "Embeded",
+    "Other"
+  ]
 }

@@ -19769,7 +19769,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var questions = ['A.json', 'B.json', 'C.json', 'D.json', 'E.json'];
+	var questions = ['F.json', 'A.json', 'B.json', 'G.json', 'C.json', 'D.json', 'E.json'];
 
 	var QuestionLoader = (function () {
 	  function QuestionLoader(actions) {

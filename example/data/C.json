@@ -1,7 +1,14 @@
 {
-  "question": "What's your favorite programming language?",
-  "type": "many-of-many",
+  "question": "How long have you been writing JavaScript?",
+  "type": "one-of-many",
   "options": [
-    "JavaScript", "JS", "I have no idea, probably JavaScript"
+    "One year or less",
+    "Two year or less",
+    "Three year or less",
+    "Four year or less",
+    "Five year or less",
+    "Six year or less",
+    "Over six years",
+    "I'm Brendan Eich"
   ]
 }

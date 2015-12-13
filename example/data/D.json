@@ -1,4 +1,7 @@
 {
-  "question": "Type your favorite JavaScript API.",
-  "type": "text"
+  "question": "Which compile-to-JavaScript languages do you use, if any?",
+  "type": "many-of-many",
+  "options": [
+    "CoffeeScript", "TypeScript", "Dart", "ES6 to ES5", "Other"
+  ]
 }

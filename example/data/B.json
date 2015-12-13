@@ -1,7 +1,7 @@
 {
-  "question": "What's your operaing system?",
-  "type": "one-of-many",
+  "question": "Where do you use JavaScript?",
+  "type": "many-of-many",
   "options": [
-    "Windows", "Linux", "OS X", "Other"
+    "At work", "For side projects", "Other"
   ]
 }
