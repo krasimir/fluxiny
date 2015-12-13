@@ -2,4 +2,4 @@
 
 ## Misc
 
-* Quesitons from [JavaScript Developer Survey Results](https://ponyfoo.com/articles/javascript-developer-survey-results)
+* Questions from [JavaScript Developer Survey Results](https://ponyfoo.com/articles/javascript-developer-survey-results)

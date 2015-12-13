@@ -10,7 +10,9 @@ export default class Question extends React.Component {
     return <div className='question'>{ this._getContent() }</div>;
   }
   _getContent() {
-    if (this._isError) {
+    if (this._isEnded) {
+      return <h2>Thank you</h2>;
+    } else if (this._isError) {
       return (
         <div>
           <h3>Ops, something wrong happen ...</h3>
@@ -34,6 +36,9 @@ export default class Question extends React.Component {
   }
   get _isLoading() {
     return this.state.currentQuestion === null;
+  }
+  get _isEnded() {
+    return this.state.ended;
   }
   _handleAnswer(e) {
     e.preventDefault();

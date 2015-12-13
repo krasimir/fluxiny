@@ -9,6 +9,7 @@ const questions = [
   'D.json',
   'E.json'
 ];
+const requestDelay = 600;
 
 export default class QuestionLoader {
   constructor(actions) {
@@ -23,7 +24,7 @@ export default class QuestionLoader {
     // delay so we simulate a remote server request
     setTimeout(() => {
       if (questions.length === 0) {
-        this.actions.fail('No more questions!');
+        this.actions.end();
       } else {
         superagent
           .get(url)
@@ -31,7 +32,7 @@ export default class QuestionLoader {
             err ? this.actions.fail(err) : this.actions.success(res.body);
           });
       }
-    }, 400);
+    }, requestDelay);
   }
   _getQuestionURL() {
     return './data/' + questions.shift();

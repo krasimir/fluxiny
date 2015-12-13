@@ -1,12 +1,14 @@
 import {
   QUESTION_REQUEST_PENDING,
-  QUESTION_REQUEST_SUCCESS
+  QUESTION_REQUEST_SUCCESS,
+  SURVEY_ENDED
 } from '../constants';
 
 export default {
   data: {
     currentQuestion: null,
-    questions: []
+    questions: [],
+    ended: false
   },
   initial: function () {
     return this.data;
@@ -20,6 +22,10 @@ export default {
       case QUESTION_REQUEST_SUCCESS:
         this.data.currentQuestion = action.payload;
         this.data.questions.push(action.payload);
+        change(this.data);
+      break;
+      case SURVEY_ENDED:
+        this.data.ended = true;
         change(this.data);
       break;
     }    

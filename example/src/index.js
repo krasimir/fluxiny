@@ -17,7 +17,8 @@ import {
   QUESTION_REQUEST_SUCCESS,
   QUESTION_REQUEST_FAIL,
   GET_NEW_QUESTION,
-  QUESTION_ANSWERED
+  QUESTION_ANSWERED,
+  SURVEY_ENDED
 } from './constants';
 
 const { createSubscriber, createAction } = Fluxiny.create();
@@ -44,7 +45,8 @@ window.onload = () => {
   let service = new QuestionLoader({
     pending: createAction(QUESTION_REQUEST_PENDING),
     success: createAction(QUESTION_REQUEST_SUCCESS),
-    fail: createAction(QUESTION_REQUEST_FAIL)
+    fail: createAction(QUESTION_REQUEST_FAIL),
+    end: createAction(SURVEY_ENDED)
   });
   createSubscriber({
     update: function (action) {

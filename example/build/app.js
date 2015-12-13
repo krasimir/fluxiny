@@ -114,7 +114,8 @@
 	  var service = new _QuestionLoader2.default({
 	    pending: createAction(_constants.QUESTION_REQUEST_PENDING),
 	    success: createAction(_constants.QUESTION_REQUEST_SUCCESS),
-	    fail: createAction(_constants.QUESTION_REQUEST_FAIL)
+	    fail: createAction(_constants.QUESTION_REQUEST_FAIL),
+	    end: createAction(_constants.SURVEY_ENDED)
 	  });
 	  createSubscriber({
 	    update: function update(action) {
@@ -19770,6 +19771,7 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var questions = ['F.json', 'A.json', 'B.json', 'G.json', 'C.json', 'D.json', 'E.json'];
+	var requestDelay = 600;
 
 	var QuestionLoader = (function () {
 	  function QuestionLoader(actions) {
@@ -19791,13 +19793,13 @@
 	      // delay so we simulate a remote server request
 	      setTimeout(function () {
 	        if (questions.length === 0) {
-	          _this.actions.fail('No more questions!');
+	          _this.actions.end();
 	        } else {
 	          _superagent2.default.get(url).end(function (err, res) {
 	            err ? _this.actions.fail(err) : _this.actions.success(res.body);
 	          });
 	        }
-	      }, 400);
+	      }, requestDelay);
 	    }
 	  }, {
 	    key: '_getQuestionURL',
@@ -21315,7 +21317,13 @@
 	  }, {
 	    key: '_getContent',
 	    value: function _getContent() {
-	      if (this._isError) {
+	      if (this._isEnded) {
+	        return _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Thank you'
+	        );
+	      } else if (this._isError) {
 	        return _react2.default.createElement(
 	          'div',
 	          null,
@@ -21373,6 +21381,11 @@
 	    key: '_isLoading',
 	    get: function get() {
 	      return this.state.currentQuestion === null;
+	    }
+	  }, {
+	    key: '_isEnded',
+	    get: function get() {
+	      return this.state.ended;
 	    }
 	  }]);
 
@@ -21451,7 +21464,7 @@
 	            _react2.default.createElement(
 	              'button',
 	              { onClick: this.props.nextQuestion, className: 'right' },
-	              'Get new question'
+	              'Skip'
 	            )
 	          )
 	        )
@@ -21626,7 +21639,8 @@
 	exports.default = {
 	  data: {
 	    currentQuestion: null,
-	    questions: []
+	    questions: [],
+	    ended: false
 	  },
 	  initial: function initial() {
 	    return this.data;
@@ -21640,6 +21654,10 @@
 	      case _constants.QUESTION_REQUEST_SUCCESS:
 	        this.data.currentQuestion = action.payload;
 	        this.data.questions.push(action.payload);
+	        change(this.data);
+	        break;
+	      case _constants.SURVEY_ENDED:
+	        this.data.ended = true;
 	        change(this.data);
 	        break;
 	    }
@@ -21660,6 +21678,7 @@
 	var QUESTION_REQUEST_FAIL = exports.QUESTION_REQUEST_FAIL = 'QUESTION_REQUEST_FAIL';
 	var GET_NEW_QUESTION = exports.GET_NEW_QUESTION = 'GET_NEW_QUESTION';
 	var QUESTION_ANSWERED = exports.QUESTION_ANSWERED = 'QUESTION_ANSWERED';
+	var SURVEY_ENDED = exports.SURVEY_ENDED = 'SURVEY_ENDED';
 
 /***/ },
 /* 170 */

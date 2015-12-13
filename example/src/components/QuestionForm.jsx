@@ -13,7 +13,7 @@ export default class QuestionForm extends React.Component {
           { this._getControls() }
           <div className='controls'>
             <button onClick={ this.props.answer }>Answer</button>
-            <button onClick={ this.props.nextQuestion } className='right'>Get new question</button>
+            <button onClick={ this.props.nextQuestion } className='right'>Skip</button>
           </div>
         </form>
       </div>
