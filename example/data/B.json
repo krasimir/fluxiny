@@ -1,0 +1,7 @@
+{
+  "question": "What's your operaing system?",
+  "type": "one-of-many",
+  "options": [
+    "Windows", "Linux", "OS X", "Other"
+  ]
+}

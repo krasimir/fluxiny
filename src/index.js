@@ -5,17 +5,20 @@ var Dispatcher = function () {
   };
 
   return {
-    constructor: function () {
-      this._stores = [];
-    },
+    _stores: [],
     register: function (store) {
-      if (_has(store, 'update', 'Every store should implement an `update` method')) {
+      if (
+        _has(store, 'update', 'Every store should implement an `update` method')
+      ) {
         var listeners = [];
-        var subscribe = function (listener) { listeners.push(listener); };
         var change = function (data) {
           listeners.forEach(function (l) { 
             l(data); 
           });
+        };
+        var subscribe = function (listener) {
+          listeners.push(listener);
+          return store.initial ? store.initial() : null;
         };
         
         this._stores.push({ store: store, change: change });
@@ -24,10 +27,7 @@ var Dispatcher = function () {
       return false;
     },
     dispatch: function (action) {
-      if (
-        _has(action, 'type', 'Every action should have a `type` property') &&
-        _has(action, 'payload', 'Every action should have a `payload` property')
-      ) {
+      if (this._stores.length > 0) {
         this._stores.forEach(function (entry) {
           entry.store.update(action, entry.change);
         });
@@ -39,13 +39,19 @@ var Dispatcher = function () {
 module.exports = {
   create: function () {
     var dispatcher = Dispatcher();
+    var _valid = function (value, error) {
+      if (!value) throw new Error(error);
+    };
 
     return {
-      dispatcher: dispatcher,
       createAction: function (type) {
+        _valid(type, 'Please, provide action\'s type.');
         return function (payload) {
           return dispatcher.dispatch({ type: type, payload: payload });
         }
+      },
+      createSubscriber: function (store) {
+        return dispatcher.register(store);
       }
     }
   }

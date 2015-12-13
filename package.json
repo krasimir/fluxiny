@@ -4,7 +4,8 @@
   "description": "Implementation of the Flux design pattern / architecture",
   "main": "src/index.js",
   "scripts": {
-    "build": "uglifyjs -o ./lib/fluxiny.min.js ./src/index.js",
+    "build": "uglifyjs -o ./lib/fluxiny.min.js ./src/index.js && npm run copy-for-example",
+    "copy-for-example": "cpy './lib/fluxiny.min.js' ./example/src/vendor",
     "watch": "watch 'npm run build' src/",
     "dev": "npm run build && npm run watch"
   },
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/krasimir/fluxiny",
   "devDependencies": {
+    "cpy": "3.4.1",
     "uglify-js": "1.3.5",
     "watch": "0.16.0"
   }

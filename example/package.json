@@ -16,6 +16,7 @@
     "babel-preset-react": "6.3.13",
     "react": "0.14.3",
     "react-dom": "0.14.3",
+    "superagent": "1.5.0",
     "webpack": "1.12.9"
   }
 }
