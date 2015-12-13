@@ -1,4 +1,4 @@
 {
   "question": "How old are you?",
-  "type": "number"
+  "type": "text"
 }

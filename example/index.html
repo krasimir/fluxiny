@@ -18,12 +18,49 @@
         padding: 0;
         margin: 1em 0 0.5em 0;
       }
+      button, input {
+        font-size: 1em;
+        display: inline-block;
+        border-radius: 3px;
+        padding: 0.5em;
+      }
+      input[type="text"] {
+        width: 100%;
+        border: 1px solid #999;
+        box-sizing: border-box;
+      }
       #container {
         max-width: 600px;
         margin: 0 auto;
       }
       header {
         border-bottom: 1px dotted #999;
+      }
+      .answers {
+        clear: both;
+        margin-top: 2em;
+        border-top: 1px dotted #999;
+      }
+        .answers ul {
+          list-style: none;
+          padding: 0;
+          margin: 0.2em 0 0 0;
+        }
+        .answers li {
+          border-radius: 3px;
+          background: #ddd;
+          padding: 0.5em;
+          margin-top: 0.2em;
+        }
+        .answers li small {
+          display: block;
+          text-align: right;
+        }
+      .controls {
+        margin-top: 0.4em;
+      }
+      .right {
+        float: right;
       }
       @media all and (max-width: 600px) {
         body {

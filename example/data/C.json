@@ -2,6 +2,6 @@
   "question": "What's your favorite programming language?",
   "type": "many-of-many",
   "options": [
-    "JavaScript", "JS", "Java Script", "I have no idea, probably JavaScript"
+    "JavaScript", "JS", "I have no idea, probably JavaScript"
   ]
 }

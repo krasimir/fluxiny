@@ -4,8 +4,8 @@ const questions = [
   'A.json',
   'B.json',
   'C.json',
-  '!D.json',
-  '!E.json'
+  'D.json',
+  'E.json'
 ];
 
 export default class QuestionLoader {
@@ -17,16 +17,21 @@ export default class QuestionLoader {
     var url = this._getQuestionURL();
 
     this.actions.pending();
+
+    // delay so we simulate a remote server request
     setTimeout(() => {
-      superagent
-      .get(url)
-      .end((err, res) => {
-        err ? this.actions.fail(err) : this.actions.success(res.body);
-      });
-    }, 700);
-    
+      if (questions.length === 0) {
+        this.actions.fail('No more questions!');
+      } else {
+        superagent
+          .get(url)
+          .end((err, res) => {
+            err ? this.actions.fail(err) : this.actions.success(res.body);
+          });
+      }
+    }, 400);
   }
   _getQuestionURL() {
-    return './data/' + questions[Math.floor(Math.random() * (questions.length-1 + 1))];
+    return './data/' + questions.shift();
   }
 };

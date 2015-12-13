@@ -2,17 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Fluxiny from './vendor/fluxiny.min';
 
+import QuestionLoader from './services/QuestionLoader';
+
 import Layout from './components/Layout.jsx';
 import Question from './components/Question.jsx';
-import QuestionLoader from './services/QuestionLoader';
+import Answers from './components/Answers.jsx';
+
 import QuestionsStore from './stores/QuestionsStore';
 import ErrorsStore from './stores/ErrorsStore';
+import AnswersStore from './stores/AnswersStore';
 
 import {
   QUESTION_REQUEST_PENDING,
   QUESTION_REQUEST_SUCCESS,
   QUESTION_REQUEST_FAIL,
-  GET_NEW_QUESTION
+  GET_NEW_QUESTION,
+  QUESTION_ANSWERED
 } from './constants';
 
 const { createSubscriber, createAction } = Fluxiny.create();
@@ -26,6 +31,10 @@ window.onload = () => {
           subscribeToQuestionStore={ createSubscriber(QuestionsStore) }
           subscribeToErrorsStore={ createSubscriber(ErrorsStore) }
           tryAgain={ createAction(GET_NEW_QUESTION) }
+          answerQuestion={ createAction(QUESTION_ANSWERED) }
+        />
+        <Answers
+          subscribeToAnswersStore={ createSubscriber(AnswersStore) }
         />
       </Layout>
     ),
