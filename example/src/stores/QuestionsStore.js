@@ -10,9 +10,6 @@ export default {
     questions: [],
     ended: false
   },
-  initial: function () {
-    return this.data;
-  },
   update: function (action, change) {
     switch (action.type) {
       case QUESTION_REQUEST_PENDING:
@@ -29,5 +26,8 @@ export default {
         change(this.data);
       break;
     }    
+  },
+  getData: function () {
+    return this.data;
   }
 };

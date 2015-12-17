@@ -2,7 +2,9 @@ import React from 'react';
 
 export default class Answers extends React.Component {
   componentWillMount() {
-    this.state = this.props.subscribeToAnswersStore(this.setState.bind(this));
+    this.props.subscribeToAnswersStore(store => {
+      this.setState({ answers: store.getAnswers() })
+    });
   }
   render() {
     var answers = this.state.answers.map((answer, i) => {

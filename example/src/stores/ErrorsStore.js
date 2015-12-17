@@ -8,9 +8,6 @@ export default {
   data: {
     error: null
   },
-  initial: function () {
-    return this.data.error;
-  },
   update: function (action, change) {
     if (action.type === QUESTION_REQUEST_FAIL) {
       this.data.error = action.payload;
@@ -24,5 +21,8 @@ export default {
         change(this.data);
       }
     }
+  },
+  getError: function () {
+    return this.data.error;
   }
 }

@@ -19723,13 +19723,13 @@
 	  };return { _stores: [], register: function register(t) {
 	      if (e(t, "update", "Every store should implement an `update` method")) {
 	        var n = [],
-	            r = function r(e) {
-	          n.forEach(function (t) {
-	            t(e);
+	            r = function r() {
+	          n.forEach(function (e) {
+	            e(t);
 	          });
 	        },
-	            i = function i(e) {
-	          return n.push(e), t.initial ? t.initial() : null;
+	            i = function i(e, r) {
+	          n.push(e), r ? null : e(t);
 	        };return this._stores.push({ store: t, change: r }), i;
 	      }return !1;
 	    }, dispatch: function dispatch(e) {
@@ -19740,9 +19740,9 @@
 	};module.exports = { create: function create() {
 	    var e = Dispatcher(),
 	        t = function t(e, _t) {
-	      if (!e) throw new Error(_t);
+	      if (!e) throw new Error(_t);return !0;
 	    };return { createAction: function createAction(n) {
-	        return t(n, "Please, provide action's type."), function (t) {
+	        if (t(n, "Please, provide action's type.")) return function (t) {
 	          return e.dispatch({ type: n, payload: t });
 	        };
 	      }, createSubscriber: function createSubscriber(t) {
@@ -21302,8 +21302,14 @@
 	  _createClass(Question, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.state = this.props.subscribeToQuestionStore(this.setState.bind(this));
-	      this.props.subscribeToErrorsStore(this.setState.bind(this));
+	      var _this2 = this;
+
+	      this.props.subscribeToQuestionStore(function (store) {
+	        _this2.setState(store.getData());
+	      });
+	      this.props.subscribeToErrorsStore(function (store) {
+	        _this2.setState({ error: store.getError() });
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -21578,7 +21584,11 @@
 	  _createClass(Answers, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.state = this.props.subscribeToAnswersStore(this.setState.bind(this));
+	      var _this2 = this;
+
+	      this.props.subscribeToAnswersStore(function (store) {
+	        _this2.setState({ answers: store.getAnswers() });
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -21642,9 +21652,6 @@
 	    questions: [],
 	    ended: false
 	  },
-	  initial: function initial() {
-	    return this.data;
-	  },
 	  update: function update(action, change) {
 	    switch (action.type) {
 	      case _constants.QUESTION_REQUEST_PENDING:
@@ -21661,6 +21668,9 @@
 	        change(this.data);
 	        break;
 	    }
+	  },
+	  getData: function getData() {
+	    return this.data;
 	  }
 	};
 
@@ -21696,9 +21706,6 @@
 	  data: {
 	    error: null
 	  },
-	  initial: function initial() {
-	    return this.data.error;
-	  },
 	  update: function update(action, change) {
 	    if (action.type === _constants.QUESTION_REQUEST_FAIL) {
 	      this.data.error = action.payload;
@@ -21709,6 +21716,9 @@
 	        change(this.data);
 	      }
 	    }
+	  },
+	  getError: function getError() {
+	    return this.data.error;
 	  }
 	};
 
@@ -21728,14 +21738,14 @@
 	  data: {
 	    answers: []
 	  },
-	  initial: function initial() {
-	    return this.data;
-	  },
 	  update: function update(action, change) {
 	    if (action.type === _constants.QUESTION_ANSWERED) {
 	      this.data.answers.push(action.payload);
 	      change(this.data);
 	    }
+	  },
+	  getAnswers: function getAnswers() {
+	    return this.data.answers;
 	  }
 	};
 

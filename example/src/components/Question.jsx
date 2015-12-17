@@ -3,8 +3,12 @@ import QuestionForm from './QuestionForm.jsx';
 
 export default class Question extends React.Component {
   componentWillMount() {
-    this.state = this.props.subscribeToQuestionStore(this.setState.bind(this));
-    this.props.subscribeToErrorsStore(this.setState.bind(this));
+    this.props.subscribeToQuestionStore(store => {
+      this.setState(store.getData());
+    });
+    this.props.subscribeToErrorsStore(store => {
+      this.setState({ error: store.getError() });
+    })
   }
   render() {
     return <div className='question'>{ this._getContent() }</div>;
