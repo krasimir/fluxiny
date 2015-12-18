@@ -19717,8 +19717,8 @@
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
 
-	(function () {
-	  var e = function e() {
+	(function (e) {
+	  var t = function t() {
 	    return { _stores: [], register: function register(e) {
 	        if (!e || !e.update) throw new Error("You should provide a store that has an `update` method.");var t = [],
 	            n = function n() {
@@ -19735,18 +19735,18 @@
 	        });
 	      } };
 	  },
-	      t = { create: function create() {
-	      var t = e();return { createAction: function createAction(e) {
-	          if (!e) throw new Error("Please, provide action's type.");return function (n) {
-	            return t.dispatch({ type: e, payload: n });
+	      n = { create: function create() {
+	      var e = t();return { createAction: function createAction(t) {
+	          if (!t) throw new Error("Please, provide action's type.");return function (n) {
+	            return e.dispatch({ type: t, payload: n });
 	          };
-	        }, createSubscriber: function createSubscriber(e) {
-	          return t.register(e);
+	        }, createSubscriber: function createSubscriber(t) {
+	          return e.register(t);
 	        } };
 	    } }; true ? !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-	    return t;
-	  }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : typeof module != "undefined" && module.exports ? module.exports = t : this.Fluxiny = t;
-	}).call(undefined);
+	    return n;
+	  }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : typeof module != "undefined" && module.exports ? module.exports = n : e.Fluxiny = n;
+	}).call(typeof window != "undefined" ? window : undefined);
 
 /***/ },
 /* 160 */

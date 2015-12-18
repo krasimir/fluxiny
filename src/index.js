@@ -1,4 +1,4 @@
-(function () {
+(function (root) {
     
   var Dispatcher = function () {
     return {
@@ -61,6 +61,6 @@
     } else if (typeof module !== 'undefined' && module.exports) {
       module.exports = Fluxiny;
     } else {
-      this.Fluxiny = Fluxiny;
+      root.Fluxiny = Fluxiny;
     }
-}.call(this));
+}.call(typeof window !== 'undefined' ? window : this));
