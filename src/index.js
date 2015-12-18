@@ -14,7 +14,9 @@
             });
           };
           var subscribe = function (consumer, noInit) {
-            consumers.push(consumer);
+            consumer.constructor === Array ?
+              consumers.concat(consumer) :
+              consumers.push(consumer);
             !noInit ? consumer(store) : null;
           };
           

@@ -19727,7 +19727,7 @@
 	          });
 	        },
 	            r = function r(n, _r) {
-	          t.push(n), _r ? null : n(e);
+	          n.constructor === Array ? t.concat(n) : t.push(n), _r ? null : n(e);
 	        };return this._stores.push({ store: e, change: n }), r;
 	      }, dispatch: function dispatch(e) {
 	        this._stores.length > 0 && this._stores.forEach(function (t) {
