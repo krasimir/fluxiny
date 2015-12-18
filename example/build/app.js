@@ -19746,7 +19746,7 @@
 	    } }; true ? !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 	    return n;
 	  }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : typeof module != "undefined" && module.exports ? module.exports = n : e.Fluxiny = n;
-	}).call(typeof window != "undefined" ? window : undefined);
+	})(typeof window != "undefined" ? window : undefined);
 
 /***/ },
 /* 160 */
