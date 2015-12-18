@@ -1,13 +1,10 @@
 var Dispatcher = function () {
-  var _has = function (obj, prop, error) {
-    if (!(prop in obj)) throw new Error(error);
-    return true;
-  };
-
   return {
     _stores: [],
     register: function (store) {
-      if (_has(store, 'update', 'Every store should implement an `update` method')) {
+      if (!store || !store.update) {
+        throw new Error('You should provide a store that has an `update` method.');
+      } else {
         var consumers = [];
         var change = function () {
           consumers.forEach(function (l) { 
@@ -37,14 +34,12 @@ var Dispatcher = function () {
 module.exports = {
   create: function () {
     var dispatcher = Dispatcher();
-    var _valid = function (value, error) {
-      if (!value) throw new Error(error);
-      return true;
-    };
 
     return {
       createAction: function (type) {
-        if (_valid(type, 'Please, provide action\'s type.')) {
+        if (!type) {
+          throw new Error('Please, provide action\'s type.');
+        } else {
           return function (payload) {
             return dispatcher.dispatch({ type: type, payload: payload });
           }
