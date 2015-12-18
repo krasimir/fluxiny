@@ -9,15 +9,18 @@
         } else {
           var consumers = [];
           var change = function () {
-            consumers.forEach(function (l) { 
-              l(store);
+            consumers.forEach(function (c) { 
+              c(store);
             });
           };
           var subscribe = function (consumer, noInit) {
-            consumer.constructor === Array ?
-              consumers.concat(consumer) :
-              consumers.push(consumer);
-            !noInit ? consumer(store) : null;
+            consumer = consumer.constructor === Array ? consumer : [consumer];
+            consumers = consumers.concat(consumer);
+            if (!noInit) {
+              consumer.forEach(function (c) {
+                c(store);
+              });
+            }
           };
           
           this._stores.push({ store: store, change: change });

@@ -9,7 +9,7 @@ export default {
   update: function (action, change) {
     if (action.type === QUESTION_ANSWERED) {
       this.data.answers.push(action.payload);
-      change(this.data);
+      change();
     }
   },
   getAnswers: function () {

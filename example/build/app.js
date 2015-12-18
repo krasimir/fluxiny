@@ -19727,7 +19727,9 @@
 	          });
 	        },
 	            r = function r(n, _r) {
-	          n.constructor === Array ? t.concat(n) : t.push(n), _r ? null : n(e);
+	          n = n.constructor === Array ? n : [n], t = t.concat(n), _r || n.forEach(function (t) {
+	            t(e);
+	          });
 	        };return this._stores.push({ store: e, change: n }), r;
 	      }, dispatch: function dispatch(e) {
 	        this._stores.length > 0 && this._stores.forEach(function (t) {
@@ -21654,16 +21656,16 @@
 	    switch (action.type) {
 	      case _constants.QUESTION_REQUEST_PENDING:
 	        this.data.currentQuestion = null;
-	        change(this.data);
+	        change();
 	        break;
 	      case _constants.QUESTION_REQUEST_SUCCESS:
 	        this.data.currentQuestion = action.payload;
 	        this.data.questions.push(action.payload);
-	        change(this.data);
+	        change();
 	        break;
 	      case _constants.SURVEY_ENDED:
 	        this.data.ended = true;
-	        change(this.data);
+	        change();
 	        break;
 	    }
 	  },
@@ -21707,11 +21709,11 @@
 	  update: function update(action, change) {
 	    if (action.type === _constants.QUESTION_REQUEST_FAIL) {
 	      this.data.error = action.payload;
-	      change(this.data);
+	      change();
 	    } else if (action.type === _constants.QUESTION_REQUEST_SUCCESS || action.type === _constants.QUESTION_REQUEST_PENDING) {
 	      if (this.data.error !== null) {
 	        this.data.error = null;
-	        change(this.data);
+	        change();
 	      }
 	    }
 	  },
@@ -21739,7 +21741,7 @@
 	  update: function update(action, change) {
 	    if (action.type === _constants.QUESTION_ANSWERED) {
 	      this.data.answers.push(action.payload);
-	      change(this.data);
+	      change();
 	    }
 	  },
 	  getAnswers: function getAnswers() {

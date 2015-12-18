@@ -11,14 +11,14 @@ export default {
   update: function (action, change) {
     if (action.type === QUESTION_REQUEST_FAIL) {
       this.data.error = action.payload;
-      change(this.data);
+      change();
     } else if (
       action.type === QUESTION_REQUEST_SUCCESS ||
       action.type === QUESTION_REQUEST_PENDING
     ) {
       if (this.data.error !== null) {
         this.data.error = null;
-        change(this.data);
+        change();
       }
     }
   },
