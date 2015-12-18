@@ -19718,32 +19718,25 @@
 	"use strict";
 
 	var Dispatcher = function Dispatcher() {
-	  var e = function e(_e, t, n) {
-	    if (t in _e) return !0;throw new Error(n);
-	  };return { _stores: [], register: function register(t) {
-	      if (e(t, "update", "Every store should implement an `update` method")) {
-	        var n = [],
-	            r = function r() {
-	          n.forEach(function (e) {
-	            e(t);
-	          });
-	        },
-	            i = function i(e, r) {
-	          n.push(e), r ? null : e(t);
-	        };return this._stores.push({ store: t, change: r }), i;
-	      }return !1;
+	  return { _stores: [], register: function register(e) {
+	      if (!e || !e.update) throw new Error("You should provide a store that has an `update` method.");var t = [],
+	          n = function n() {
+	        t.forEach(function (t) {
+	          t(e);
+	        });
+	      },
+	          r = function r(n, _r) {
+	        t.push(n), _r ? null : n(e);
+	      };return this._stores.push({ store: e, change: n }), r;
 	    }, dispatch: function dispatch(e) {
 	      this._stores.length > 0 && this._stores.forEach(function (t) {
 	        t.store.update(e, t.change);
 	      });
 	    } };
 	};module.exports = { create: function create() {
-	    var e = Dispatcher(),
-	        t = function t(e, _t) {
-	      if (!e) throw new Error(_t);return !0;
-	    };return { createAction: function createAction(n) {
-	        if (t(n, "Please, provide action's type.")) return function (t) {
-	          return e.dispatch({ type: n, payload: t });
+	    var e = Dispatcher();return { createAction: function createAction(t) {
+	        if (!t) throw new Error("Please, provide action's type.");return function (n) {
+	          return e.dispatch({ type: t, payload: n });
 	        };
 	      }, createSubscriber: function createSubscriber(t) {
 	        return e.register(t);
