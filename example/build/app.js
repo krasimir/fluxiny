@@ -19713,35 +19713,40 @@
 
 /***/ },
 /* 159 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	var __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
 
-	var Dispatcher = function Dispatcher() {
-	  return { _stores: [], register: function register(e) {
-	      if (!e || !e.update) throw new Error("You should provide a store that has an `update` method.");var t = [],
-	          n = function n() {
-	        t.forEach(function (t) {
-	          t(e);
+	(function () {
+	  var e = function e() {
+	    return { _stores: [], register: function register(e) {
+	        if (!e || !e.update) throw new Error("You should provide a store that has an `update` method.");var t = [],
+	            n = function n() {
+	          t.forEach(function (t) {
+	            t(e);
+	          });
+	        },
+	            r = function r(n, _r) {
+	          t.push(n), _r ? null : n(e);
+	        };return this._stores.push({ store: e, change: n }), r;
+	      }, dispatch: function dispatch(e) {
+	        this._stores.length > 0 && this._stores.forEach(function (t) {
+	          t.store.update(e, t.change);
 	        });
-	      },
-	          r = function r(n, _r) {
-	        t.push(n), _r ? null : n(e);
-	      };return this._stores.push({ store: e, change: n }), r;
-	    }, dispatch: function dispatch(e) {
-	      this._stores.length > 0 && this._stores.forEach(function (t) {
-	        t.store.update(e, t.change);
-	      });
-	    } };
-	};module.exports = { create: function create() {
-	    var e = Dispatcher();return { createAction: function createAction(t) {
-	        if (!t) throw new Error("Please, provide action's type.");return function (n) {
-	          return e.dispatch({ type: t, payload: n });
-	        };
-	      }, createSubscriber: function createSubscriber(t) {
-	        return e.register(t);
 	      } };
-	  } };
+	  },
+	      t = { create: function create() {
+	      var t = e();return { createAction: function createAction(e) {
+	          if (!e) throw new Error("Please, provide action's type.");return function (n) {
+	            return t.dispatch({ type: e, payload: n });
+	          };
+	        }, createSubscriber: function createSubscriber(e) {
+	          return t.register(e);
+	        } };
+	    } }; true ? !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	    return t;
+	  }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : typeof module != "undefined" && module.exports ? module.exports = t : this.Fluxiny = t;
+	}).call(undefined);
 
 /***/ },
 /* 160 */
