@@ -1,6 +1,6 @@
 {
   "name": "fluxiny",
-  "version": "0.2.9",
+  "version": "1.0.0",
   "description": "Implementation of the Flux design pattern / architecture",
   "main": "src/index.js",
   "scripts": {
