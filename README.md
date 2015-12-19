@@ -4,7 +4,9 @@
 
 ![Flux](http://krasimirtsonev.com/blog/articles/fluxiny/fluxiny_basic_flux_architecture.jpg)
 
-[Flux](http://facebook.github.io/flux/) is an architectural design pattern for building user interfaces. It was introduced by Facebook at their [F8](https://youtu.be/nYkdrAPrdcw?t=568) conference. Since then, lots of companies adopted the idea and it seems like a good pattern for building front-end apps. Flux is very often used with [React](http://facebook.github.io/react/). Another library released by Facebook. I myself use React+Flux in my [daily job](http://trialreach.com/) and I could say that the simplicity is one of the main benefits. This combination helps creating apps faster and at the same time keeps the code well organized. This library is a result of my experience using the pattern. I'm a big fan of simple and small, almost vanilla JavaScript libraries. So, Fluxiny is created in the same manner.
+[Flux](http://facebook.github.io/flux/) is an architectural design pattern for building user interfaces. It was introduced by Facebook at their [F8](https://youtu.be/nYkdrAPrdcw?t=568) conference. Since then, lots of companies adopted the idea and it seems like a good pattern for building front-end apps. Flux is very often used with [React](http://facebook.github.io/react/). Another library released by Facebook. I myself use React+Flux in my [daily job](http://trialreach.com/) and I could say that the simplicity is one of the main benefits. This combination helps creating apps faster and at the same time keeps the code well organized. This library is a result of my experience using the pattern. I'm a big fan of simple and small, almost vanilla written JavaScript libraries. So, Fluxiny is created in the same manner.
+
+---
 
 #### Store
 
@@ -39,6 +41,34 @@ All we have to do is calling the action function and if we need to attach some d
 #### Dispatcher
 
 We don't need a dispatcher. There is such but it's used by Fluxiny internally. The library is designed like that so the developer simply doesn't need it.
+
+#### View
+
+The view could be anything. As long as it has an access to a `subscriber` function. If it updates its state based on changes in the store we could say that satisfies the Flux pattern.
+
+```js
+var Store = {
+  _data: { value: 0 },
+  update: function (action, change) {
+    // ... calculate the value
+    change();
+  },
+  getValue: function () {
+    return this._data.value;
+  }
+};
+
+var subscriber = createSubscriber(store);
+
+var View = function() {
+  var state = { value: 0 };
+
+  subscriber(function (store) {
+    state.value = store.getValue();
+  });
+};
+
+``` 
 
 ## Public API
 
