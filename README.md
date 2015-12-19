@@ -6,9 +6,9 @@
 
 ## Usage
 
-### Flux actors
+### The Flux units
 
-Here are the base units of every Flux architecture and how are they presented in the library.
+Here are the main actors of every Flux architecture and how they are presented in the library.
 
 #### Store
 
