@@ -70,7 +70,9 @@ var View = function() {
 
 ``` 
 
-## Public API
+## Fluxiny public API
+
+The library exports only two methods. That's it. There are no base classes for extending.
 
 ```js
 import Fluxiny from 'fluxiny';
