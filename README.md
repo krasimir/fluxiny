@@ -47,7 +47,7 @@ var Store = {
 
 Remember how `createSubscriber` returns a `subscriber` variable. That's actually a function. It accepts a callback which is fired every time when the store calls `change()` internally.
 
-```
+```js
 var Store = { 
   _data: { value: 0 },
   update: function (action, change) { 
@@ -81,7 +81,7 @@ Notice how we need a getter in the store so the view could fetch the needed info
 
 Fluxiny uses the action-creator pattern. We specify the type of the action and as a result we get a function. For example:
 
-```
+```js
 var increaseAction = createAction('increase');
 
 var View = function (subscriber, increaseAction) {
