@@ -4,9 +4,7 @@
 
 ![Flux](http://krasimirtsonev.com/blog/articles/fluxiny/fluxiny_basic_flux_architecture.jpg)
 
-## The Flux units
-
-Here are the main actors of every Flux architecture and how they are presented in the library.
+[Flux](http://facebook.github.io/flux/) is an architectural design pattern for building user interfaces. It was introduced by Facebook at their [F8](https://youtu.be/nYkdrAPrdcw?t=568) conference. Since then, lots of companies adopted the idea and it seems like a good pattern for building front-end apps. Flux is very often used with [React](http://facebook.github.io/react/). Another library released by Facebook. I myself use React+Flux in my [daily job](http://trialreach.com/) and I could say that the simplicity is one of the main benefits. This combination helps creating apps faster and at the same time keeps the code well organized. This library is a result of my experience using the pattern. I'm a big fan of simple and small, almost vanilla JavaScript libraries. So, Fluxiny is created in the same manner.
 
 #### Store
 
