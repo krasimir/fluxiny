@@ -32,7 +32,7 @@ describe('Given an instance of Fluxiny', function() {
       createAction = Flux.createAction;
     });
 
-    describe('and when we provide a store without update method', function () {
+    describe('and when we provide a store without `update` method', function () {
       it('should thrown an error', function (done) {
         try {
           createSubscriber({});
@@ -42,7 +42,7 @@ describe('Given an instance of Fluxiny', function() {
       });
     });
 
-    describe('and when we call createAction without providing action type', function () {
+    describe('and when we call `createAction` without providing action type', function () {
       it('should thrown an error', function (done) {
         try {
           createAction();
