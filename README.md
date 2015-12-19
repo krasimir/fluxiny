@@ -4,9 +4,7 @@
 
 ![Flux](http://krasimirtsonev.com/blog/articles/fluxiny/fluxiny_basic_flux_architecture.jpg)
 
-## Usage
-
-### The Flux units
+## The Flux units
 
 Here are the main actors of every Flux architecture and how they are presented in the library.
 
@@ -44,7 +42,7 @@ All we have to do is calling the action function and if we need to attach some d
 
 We don't need a dispatcher. There is such but it's used by Fluxiny internally. The library is designed like that so the developer simply doesn't need it.
 
-### Public API
+## Public API
 
 ```js
 import Fluxiny from 'fluxiny';
@@ -54,7 +52,7 @@ const { createSubscriber, createAction } = Fluxiny.create();
 * `createSubscriber` accepts our store and returns a subscriber function. 
 * `createAction` accepts a string (type of action) and returns a dispatching function.
 
-### Processes
+## Processes
 
 Here are the main processes in the context of library:
 
