@@ -22,6 +22,7 @@ export default class Question extends React.Component {
           <h3>Ops, something wrong happen ...</h3>
           <p>{ this.state.error.toString() }</p>
           <button onClick={ this.props.tryAgain }>try again</button>
+          <p><small><i>No, the demo is not broken. This is just a demonstration of error handling :)</i></small></p>
         </div>
       );
     } else {

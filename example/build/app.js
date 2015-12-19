@@ -21347,6 +21347,19 @@
 	            'button',
 	            { onClick: this.props.tryAgain },
 	            'try again'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'small',
+	              null,
+	              _react2.default.createElement(
+	                'i',
+	                null,
+	                'No, the demo is not broken. This is just a demonstration of error handling :)'
+	              )
+	            )
 	          )
 	        );
 	      } else {
