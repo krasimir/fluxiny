@@ -120,6 +120,15 @@ Then simply import the module with
 import Fluxiny from 'fluxiny';
 ```
 
+## Testing
+
+Run the following command:
+
+```
+npm install && npm run test
+```
+
+![tests](./imgs/tests.jpg)
 
 ## Resources
 

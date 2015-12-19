@@ -7,7 +7,8 @@
     "build": "uglifyjs -o ./lib/fluxiny.min.js ./src/index.js && npm run copy-for-example",
     "copy-for-example": "cpy './lib/fluxiny.min.js' ./example/src/vendor",
     "watch": "watch 'npm run build' src/",
-    "dev": "npm run build && npm run watch"
+    "dev": "npm run build && npm run watch",
+    "test": "mocha --colors ./test/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,11 @@
   },
   "homepage": "https://github.com/krasimir/fluxiny",
   "devDependencies": {
+    "chai": "3.4.1",
     "cpy": "3.4.1",
+    "mocha": "2.3.4",
+    "sinon": "1.17.2",
+    "sinon-chai": "2.8.0",
     "uglify-js": "1.3.5",
     "watch": "0.16.0"
   }
