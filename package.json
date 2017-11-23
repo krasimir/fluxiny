@@ -1,8 +1,8 @@
 {
   "name": "fluxiny",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Implementation of the Flux design pattern / architecture",
-  "main": "src/index.js",
+  "main": "lib/fluxiny.min.js",
   "scripts": {
     "build": "uglifyjs -o ./lib/fluxiny.min.js ./src/index.js && npm run copy-for-example",
     "copy-for-example": "cpy './lib/fluxiny.min.js' ./example/src/vendor",
